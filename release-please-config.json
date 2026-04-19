@@ -1,0 +1,11 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "@mrgoonie/rapidapi-cli",
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": true,
+      "include-v-in-tag": true
+    }
+  }
+}

@@ -1,11 +1,12 @@
 {
-  "name": "rapidapi",
-  "version": "0.0.0",
+  "name": "@mrgoonie/rapidapi-cli",
+  "version": "0.1.0",
   "description": "CLI proxy for RapidAPI.com — agent & human friendly",
   "type": "module",
-  "bin": { "rapidapi": "./bin/rapidapi.ts" },
-  "engines": { "bun": ">=1.1", "node": ">=20" },
-  "files": ["bin", "src", "README.md", "LICENSE"],
+  "bin": { "rapidapi": "./dist/rapidapi.mjs" },
+  "engines": { "node": ">=20" },
+  "files": ["dist", "README.md", "LICENSE"],
+  "publishConfig": { "access": "public" },
   "keywords": ["rapidapi", "cli", "proxy", "http", "api", "agent"],
   "repository": "github:mrgoonie/rapidapi-cli",
   "license": "MIT",
@@ -14,7 +15,7 @@
     "test": "bun test",
     "typecheck": "bunx tsc --noEmit",
     "lint": "bunx tsc --noEmit",
-    "build": "bun build bin/rapidapi.ts --outfile dist/rapidapi.cjs --target node --format cjs",
+    "build": "bun build bin/rapidapi.ts --outfile dist/rapidapi.mjs --target node",
     "prepublishOnly": "bun run build"
   },
   "dependencies": {

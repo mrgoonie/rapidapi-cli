@@ -116,6 +116,29 @@ export function registerCall(program: Command): void {
     .option("--key <key>", "RapidAPI key (overrides env/config)")
     .option("--timeout <ms>", "Request timeout in ms", "30000")
     .option("--raw", "Print raw response body without formatting")
+    .addHelpText("after", `
+Examples:
+  # GET with query params (short-flag style)
+  $ rapidapi call twitter154.p.rapidapi.com /user/details \\
+      --username elonmusk --user_id 44196397
+
+  # GET with explicit --query flags
+  $ rapidapi call twitter154.p.rapidapi.com /user/details \\
+      --query username=elonmusk --json
+
+  # POST with JSON body
+  $ rapidapi call api.example.p.rapidapi.com /items \\
+      --method POST --data '{"name":"widget"}' \\
+      --header Content-Type=application/json
+
+  # Body from file
+  $ rapidapi call api.example.p.rapidapi.com /items \\
+      --method POST --data @payload.json
+
+  # Body from stdin
+  $ cat payload.json | rapidapi call api.example.p.rapidapi.com /items \\
+      --method POST --data -
+`)
     .action(async (host: string, path: string, opts: CallOptions, cmd: Command) => {
       const globalOpts = cmd.parent?.opts<GlobalOptions>() ?? {
         json: false, noColor: false, quiet: false, verbose: false,

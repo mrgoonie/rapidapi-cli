@@ -3,6 +3,7 @@ export interface RawConfig {
   apiKey: string;
   searchEndpoint: string;
   defaultHost: string;
+  identityKey: string;
 }
 
 /** Which source each resolved field came from */
