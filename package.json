@@ -1,13 +1,30 @@
 {
   "name": "@mrgoonie/rapidapi-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CLI proxy for RapidAPI.com — agent & human friendly",
   "type": "module",
-  "bin": { "rapidapi": "./dist/rapidapi.mjs" },
-  "engines": { "node": ">=20" },
-  "files": ["dist", "README.md", "LICENSE"],
-  "publishConfig": { "access": "public" },
-  "keywords": ["rapidapi", "cli", "proxy", "http", "api", "agent"],
+  "bin": {
+    "rapidapi": "./dist/rapidapi.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "rapidapi",
+    "cli",
+    "proxy",
+    "http",
+    "api",
+    "agent"
+  ],
   "repository": "github:mrgoonie/rapidapi-cli",
   "license": "MIT",
   "scripts": {
