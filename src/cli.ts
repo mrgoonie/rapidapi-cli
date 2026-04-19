@@ -4,8 +4,11 @@ import { registerCall } from "./commands/call.ts";
 import { registerSearch } from "./commands/search.ts";
 import { registerConfig } from "./commands/config-cmd.ts";
 import { registerLogin } from "./commands/login.ts";
+import { formatError } from "./lib/output.ts";
+import { CliError } from "./lib/errors.ts";
+import type { GlobalOptions } from "./types.ts";
 
-// Read version from package.json at runtime
+// Read version from package.json at runtime (bundler resolves at build time)
 const require = createRequire(import.meta.url);
 const pkg = require("../package.json") as { version: string };
 
@@ -26,5 +29,12 @@ export async function run(argv: string[]): Promise<void> {
   registerConfig(program);
   registerLogin(program);
 
-  await program.parseAsync(argv);
+  try {
+    await program.parseAsync(argv);
+  } catch (err) {
+    const globalOpts = program.opts<GlobalOptions>();
+    formatError(err, globalOpts);
+    if (err instanceof CliError) process.exit(err.exitCode);
+    else process.exit(1);
+  }
 }
