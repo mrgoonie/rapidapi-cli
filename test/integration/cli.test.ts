@@ -10,9 +10,18 @@ interface SpawnResult {
   exitCode: number;
 }
 
-async function spawnCli(args: string[], env: Record<string, string> = {}): Promise<SpawnResult> {
+async function spawnCli(
+  args: string[],
+  env: Record<string, string> = {},
+  cwd?: string
+): Promise<SpawnResult> {
+  // Strip RAPIDAPI_* from inherited env to avoid leakage from dev machine
+  const cleanEnv = Object.fromEntries(
+    Object.entries(process.env).filter(([k]) => !k.startsWith("RAPIDAPI_"))
+  ) as Record<string, string>;
   const proc = Bun.spawn(["bun", BIN, ...args], {
-    env: { ...process.env, ...env },
+    env: { ...cleanEnv, ...env },
+    cwd: cwd ?? process.cwd(),
     stdout: "pipe",
     stderr: "pipe",
   });
@@ -49,7 +58,8 @@ describe("CLI integration — missing key error", () => {
     try {
       const result = await spawnCli(
         ["--json", "call", "api.example.com", "/v1"],
-        { XDG_CONFIG_HOME: dir, RAPIDAPI_KEY: "" }
+        { XDG_CONFIG_HOME: dir, RAPIDAPI_KEY: "" },
+        dir
       );
       expect(result.exitCode).not.toBe(0);
       // stdout should contain error JSON

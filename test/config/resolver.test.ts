@@ -9,11 +9,14 @@ import { makeTmpDir } from "../helpers/tmp-dir.ts";
 let tmpDir: string;
 let cleanup: () => void;
 const originalEnv = { ...process.env };
+const originalCwd = process.cwd();
 
 beforeEach(() => {
   const tmp = makeTmpDir();
   tmpDir = tmp.dir;
   cleanup = tmp.cleanup;
+  // Isolate from repo's real .env — resolver reads process.cwd()
+  process.chdir(tmpDir);
   // Reset env to original before each test
   for (const k of Object.keys(process.env)) {
     if (k.startsWith("RAPIDAPI_") || k === "XDG_CONFIG_HOME" || k === "APPDATA") {
@@ -23,6 +26,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  process.chdir(originalCwd);
   cleanup();
   // Restore original env
   for (const k of Object.keys(process.env)) {

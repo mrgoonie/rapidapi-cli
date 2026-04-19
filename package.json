@@ -1,6 +1,6 @@
 {
   "name": "@mrgoonie/rapidapi-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI proxy for RapidAPI.com — agent & human friendly",
   "type": "module",
   "bin": { "rapidapi": "./dist/rapidapi.mjs" },
@@ -16,6 +16,7 @@
     "typecheck": "bunx tsc --noEmit",
     "lint": "bunx tsc --noEmit",
     "build": "bun build bin/rapidapi.ts --outfile dist/rapidapi.mjs --target node",
+    "postbuild": "node scripts/fix-shebang.mjs",
     "prepublishOnly": "bun run build"
   },
   "dependencies": {
