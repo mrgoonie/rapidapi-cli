@@ -1,0 +1,23 @@
+{
+  "name": "rapidapi-cli-marketplace",
+  "owner": { "name": "mrgoonie", "email": "digitop.vn@gmail.com" },
+  "metadata": {
+    "description": "Claude skills and plugins for the rapidapi CLI — proxy HTTP calls through RapidAPI.com from Claude.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "rapidapi",
+      "source": "./plugins/rapidapi",
+      "description": "Teaches Claude to call any RapidAPI.com endpoint fluently via the `rapidapi` CLI — auth, proxy requests, search the hub, and parse JSON responses.",
+      "version": "0.1.0",
+      "author": { "name": "mrgoonie", "email": "digitop.vn@gmail.com" },
+      "homepage": "https://github.com/mrgoonie/rapidapi-cli",
+      "repository": "https://github.com/mrgoonie/rapidapi-cli",
+      "license": "MIT",
+      "keywords": ["rapidapi", "api", "http", "proxy", "cli", "integration"],
+      "category": "integrations",
+      "tags": ["rapidapi", "http-client", "api-proxy", "cli-wrapper"]
+    }
+  ]
+}

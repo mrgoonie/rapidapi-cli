@@ -1,0 +1,10 @@
+{
+  "name": "rapidapi",
+  "version": "0.1.0",
+  "description": "Proxy HTTP calls through RapidAPI.com from Claude using the `rapidapi` CLI.",
+  "author": { "name": "mrgoonie", "email": "digitop.vn@gmail.com" },
+  "homepage": "https://github.com/mrgoonie/rapidapi-cli",
+  "repository": "https://github.com/mrgoonie/rapidapi-cli",
+  "license": "MIT",
+  "keywords": ["rapidapi", "api", "http", "proxy", "cli"]
+}
