@@ -1,0 +1,30 @@
+{
+  "name": "rapidapi",
+  "version": "0.0.0",
+  "description": "CLI proxy for RapidAPI.com — agent & human friendly",
+  "type": "module",
+  "bin": { "rapidapi": "./bin/rapidapi.ts" },
+  "engines": { "bun": ">=1.1", "node": ">=20" },
+  "files": ["bin", "src", "README.md", "LICENSE"],
+  "keywords": ["rapidapi", "cli", "proxy", "http", "api", "agent"],
+  "repository": "github:mrgoonie/rapidapi-cli",
+  "license": "MIT",
+  "scripts": {
+    "dev": "bun bin/rapidapi.ts",
+    "test": "bun test",
+    "typecheck": "bunx tsc --noEmit",
+    "lint": "bunx tsc --noEmit",
+    "build": "bun build bin/rapidapi.ts --outfile dist/rapidapi.cjs --target node --format cjs",
+    "prepublishOnly": "bun run build"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.0",
+    "env-paths": "^3.0.0",
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.4.0"
+  }
+}
